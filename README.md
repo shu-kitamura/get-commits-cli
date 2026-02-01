@@ -1,10 +1,9 @@
-# get-commits-cli
+# get-ghc
 
 GitHub API（Search Commits）を使って、自分のコミット履歴を取得するCLIツールです。
 
 ## 機能
 
-- 直近30日間の自分のコミットを取得（author + committer-date）
 - 開始日/終了日を指定して期間内のコミットを取得
 - パブリック/プライベートリポジトリ両方に対応
 - 日時はJST（日本標準時）形式で出力

@@ -1,9 +1,9 @@
 {
-  "name": "get-commit-cli",
+  "name": "get-ghc",
   "version": "1.0.0",
   "description": "A CLI tool to get commit information from GitHub",
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "author": "",
   "type": "module",
   "main": "dist/lib/index.js",
