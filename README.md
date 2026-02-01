@@ -1,10 +1,10 @@
 # get-commits-cli
 
-GitHub API を使って、自分のコミット履歴を取得するCLIツールです。
+GitHub API（Search Commits）を使って、自分のコミット履歴を取得するCLIツールです。
 
 ## 機能
 
-- 直近30日間の自分のコミットを取得
+- 直近30日間の自分のコミットを取得（author + committer-date）
 - パブリック/プライベートリポジトリ両方に対応
 - 日時はJST（日本標準時）形式で出力
 - JSON形式で結果を出力
@@ -17,7 +17,7 @@ GitHub API を使って、自分のコミット履歴を取得するCLIツール
     "date": "2026-01-30T00:01:17.000+09:00",
     "repository": "owner/repo",
     "sha": "abc123...",
-    "message": "コミットメッセージの1行目",
+    "message": "コミットメッセージ",
     "url": "https://github.com/owner/repo/commit/abc123..."
   }
 ]
@@ -51,13 +51,19 @@ export GITHUB_TOKEN="your_github_token"
 ### 2. 実行
 
 ```bash
-npx tsx src/get-commits.ts
+npm run start
+```
+
+または
+
+```bash
+npx tsx src/cli/main.ts
 ```
 
 ### 出力例
 
 ```bash
-npx tsx src/get-commits.ts > commits.json
+npm run start > commits.json
 ```
 
 ## 開発
@@ -72,6 +78,18 @@ npm install
 
 ```bash
 npx tsc --noEmit
+```
+
+### テスト
+
+```bash
+npm test
+```
+
+### ビルド
+
+```bash
+npm run build
 ```
 
 ## ライセンス
