@@ -5,6 +5,7 @@ GitHub API（Search Commits）を使って、自分のコミット履歴を取�
 ## 機能
 
 - 直近30日間の自分のコミットを取得（author + committer-date）
+- 開始日/終了日を指定して期間内のコミットを取得
 - パブリック/プライベートリポジトリ両方に対応
 - 日時はJST（日本標準時）形式で出力
 - JSON形式で結果を出力
@@ -58,6 +59,12 @@ npm run start
 
 ```bash
 npx tsx src/cli/main.ts
+```
+
+期間指定の場合:
+
+```bash
+npx tsx src/cli/main.ts -s 2026-01-01 -e 2026-01-31
 ```
 
 ### 出力例

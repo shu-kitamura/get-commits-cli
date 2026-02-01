@@ -1,4 +1,4 @@
-import { isoDateOnlyUTC, toJstIso } from "../src/lib/date";
+import { isoDateOnlyUTC, parseIsoDateOnlyUTC, toJstIso } from "../src/lib/date";
 
 describe("isoDateOnlyUTC", () => {
   it("formats UTC date parts with zero padding", () => {
@@ -26,5 +26,21 @@ describe("toJstIso", () => {
   it("returns input when parsing fails", () => {
     const input = "not-a-date";
     expect(toJstIso(input)).toBe(input);
+  });
+});
+
+describe("parseIsoDateOnlyUTC", () => {
+  it("parses YYYY-MM-DD as UTC date", () => {
+    const d = parseIsoDateOnlyUTC("2026-01-31");
+    expect(d).not.toBeNull();
+    expect(isoDateOnlyUTC(d as Date)).toBe("2026-01-31");
+  });
+
+  it("returns null for invalid format", () => {
+    expect(parseIsoDateOnlyUTC("2026-1-01")).toBeNull();
+  });
+
+  it("returns null for out-of-range dates", () => {
+    expect(parseIsoDateOnlyUTC("2026-02-30")).toBeNull();
   });
 });
