@@ -10,6 +10,11 @@
   "scripts": {
     "start": "tsx src/cli/main.ts",
     "build": "tsc",
+    "lint": "oxlint src",
+    "lint:fix": "oxlint src --fix",
+    "format": "oxfmt --check src",
+    "format:fix": "oxfmt --write src",
+    "check": "oxlint src && oxfmt --check src && tsc --noEmit",
     "test": "jest"
   },
   "devDependencies": {
