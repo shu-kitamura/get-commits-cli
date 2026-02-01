@@ -5,9 +5,11 @@
   "keywords": [],
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/lib/index.js",
   "scripts": {
+    "start": "tsx src/cli/main.ts",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
