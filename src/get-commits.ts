@@ -69,10 +69,6 @@ async function getMyLogin(token: string): Promise<string> {
   return me.login;
 }
 
-function firstLine(msg: string): string {
-  return (msg ?? "").split("\n")[0] ?? "";
-}
-
 async function main() {
   const token = process.env.GITHUB_TOKEN;
   if (!token) throw new Error("GITHUB_TOKEN is required");
@@ -107,7 +103,7 @@ async function main() {
         date: utcDate ? toJstIso(utcDate) : "",
         repository: item.repository.full_name,
         sha: item.sha,
-        message: firstLine(item.commit.message),
+        message: item.commit.message,
         url: item.html_url,
       });
     }
