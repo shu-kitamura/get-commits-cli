@@ -50,7 +50,9 @@ async function main() {
 
   if (start || end) {
     if (!start || !end) {
-      throw new Error("Both --start and --end are required when specifying a range");
+      throw new Error(
+        "Both --start and --end are required when specifying a range"
+      );
     }
 
     const startDate = parseIsoDateOnlyUTC(start);

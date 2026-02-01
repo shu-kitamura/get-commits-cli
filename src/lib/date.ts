@@ -15,7 +15,11 @@ export function parseIsoDateOnlyUTC(input: string): Date | null {
   const day = Number(match[3]);
 
   const d = new Date(Date.UTC(year, month - 1, day));
-  if (d.getUTCFullYear() !== year || d.getUTCMonth() + 1 !== month || d.getUTCDate() !== day) {
+  if (
+    d.getUTCFullYear() !== year ||
+    d.getUTCMonth() + 1 !== month ||
+    d.getUTCDate() !== day
+  ) {
     return null;
   }
 

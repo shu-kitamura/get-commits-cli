@@ -6,14 +6,17 @@ async function gh<T>(url: string, token: string): Promise<T> {
     headers: {
       Authorization: `Bearer ${token}`,
       // Search commits は環境によって preview media type が必要な場合があるため併記
-      Accept: "application/vnd.github.cloak-preview+json, application/vnd.github+json",
+      Accept:
+        "application/vnd.github.cloak-preview+json, application/vnd.github+json",
       "X-GitHub-Api-Version": "2022-11-28",
     },
   });
 
   if (!res.ok) {
     const text = await res.text().catch(() => "");
-    throw new Error(`GitHub API error ${res.status} ${res.statusText}\n${text}`);
+    throw new Error(
+      `GitHub API error ${res.status} ${res.statusText}\n${text}`
+    );
   }
   return (await res.json()) as T;
 }
@@ -27,7 +30,7 @@ export async function fetchCommits(
   token: string,
   login: string,
   since: Date,
-  until: Date,
+  until: Date
 ): Promise<Commit[]> {
   // Search query: 自分(author) + committer-date 範囲
   const q = `author:${login} committer-date:${isoDateOnlyUTC(since)}..${isoDateOnlyUTC(until)}`;
@@ -47,7 +50,8 @@ export async function fetchCommits(
     const data = await gh<SearchCommitsResponse>(url, token);
 
     for (const item of data.items) {
-      const utcDate = item.commit.committer?.date ?? item.commit.author?.date ?? "";
+      const utcDate =
+        item.commit.committer?.date ?? item.commit.author?.date ?? "";
 
       out.push({
         date: utcDate ? toJstIso(utcDate) : "",
